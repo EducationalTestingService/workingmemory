@@ -1,0 +1,229 @@
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url(/C3.NET/WorkingMemory/icons/MaterialIcons-Regular.eot); /* For IE6-8 */
+    src: local('Material Icons'),
+    local('MaterialIcons-Regular'),
+    url(/C3.NET/WorkingMemory/icons/MaterialIcons-Regular.woff2) format('woff2'),
+    url(/C3.NET/WorkingMemory/icons/MaterialIcons-Regular.woff) format('woff'),
+    url(/C3.NET/WorkingMemory/icons/MaterialIcons-Regular.ttf) format('truetype');
+}
+
+#wmContainer {
+    position:relative;
+    width:398px;
+    height:398px;
+    border:1px solid #eee;
+    margin:0px auto 0px auto;
+
+    font-family: Arial;
+    color:#222;
+    font-size:16px;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;  
+    -ms-user-select: none;   
+    user-select: none;    
+}
+
+#wmPresentation {
+    height:200px;
+    padding-top:70px;
+    text-align:center;
+    display:none;
+}
+
+#wmFeedback {
+    height:200px;
+    padding-top:70px;
+    text-align:center;
+    display:none;
+    background-color: #ffffff;
+    text-align:left;
+}
+
+#wmFeedbackCorrect {
+    text-align:center;
+    display:none;
+}
+
+#wmFeedbackIncorrect {  
+    text-align:center;
+    display:none;
+}
+
+#wmFeedbackAnswer {  
+    text-align:center;
+}
+
+#wmCorrectIcon { color: #008000; vertical-align:middle; }
+#wmIncorrectIcon { color: #cc0000; vertical-align:middle; }
+
+
+
+
+
+#wmRecallControls {
+    position:absolute;
+    bottom:0px;
+    width:100%;
+    height:40px;
+    text-align:right;
+    overflow:auto;
+}
+
+#wmCtrlStart {
+    float:none;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+#wmStartScreen {
+    height:100%;
+    position:relative;
+}
+
+#wmStartContainer {
+    position:absolute;
+    bottom:60px;
+    width:100%;
+}
+
+#wmInstructions {
+    line-height:22px;
+    padding:80px 20px 0px 20px;
+}
+
+.wmAutoAdvanceInstructions {
+    font-size:80px;
+    text-align:center;
+}
+
+.wmDigitsDisplay {
+    font-size:80px;
+    color:#555;
+}
+
+.wmLettersDisplay {
+    font-size:80px;
+    color:#555;
+}
+
+
+#wmRecall {
+    display:none;
+    overflow:auto;
+    padding-top:100px;
+    margin:0px auto 0px auto;
+}
+
+#wmRecallDisplay {
+    text-align:center;
+    border:1px solid #ddd;
+    height:30px;
+    line-height:30px;
+    margin:0px 10px 30px 10px;
+    overflow:hidden;
+}
+
+.wmRecallDigitDisplay {
+    font-size:24px;
+    margin: 0 2px 0 2px;
+}
+
+#wmRecallButtons {
+    text-align:center;
+    font-size:1px;
+}
+
+.wmRecallButton {
+    display:inline-block;
+    vertical-align:top;
+    width:30px;
+    height:30px;
+    margin:2px;
+    border-radius:4px;
+    font-size:18px;
+    line-height:30px;
+    text-align:center;
+    border:1px solid #ddd;
+    background: #ffffff;
+    background: -moz-linear-gradient(top, #ffffff 0%, #e5e5e5 100%);
+    background: -webkit-linear-gradient(top, #ffffff 0%,#e5e5e5 100%);
+    background: linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%);
+    cursor:pointer;
+}
+
+.wmRecallButton:hover {
+    background: -moz-linear-gradient(top, #eeeeee 0%, #ccc 100%);
+    background: -webkit-linear-gradient(top, #eeeeee 0%,#ccc 100%);
+    background: linear-gradient(to bottom, #eeeeee 0%,#ccc 100%);
+}
+
+.wmRecallButton:active {
+    background: -moz-linear-gradient(top, #eeeeee 0%, #ccc 100%);
+    background: -webkit-linear-gradient(top, #eeeeee 0%,#ccc 100%);
+    background: linear-gradient(to bottom, #eeeeee 0%,#ccc 100%);
+    margin-top:3px;
+    margin-bottom:0px;
+}
+
+.wmBlkButton {
+    display:block;
+    float:right;
+    vertical-align:top;
+    width: 100px;
+    height:25px; 
+    line-height:25px; 
+    margin: 1px 5px 1px 0px;
+    vertical-align:top;
+    color:#fff;
+    text-align:center; 
+    border-radius:4px;
+    background-color:#ccc;
+    cursor:auto;
+    text-decoration:none;
+    letter-spacing:1px;
+    border:0px;
+    outline:none;
+}
+
+.wmBlkButton {
+    background-color:#444;
+    cursor:pointer;
+}
+
+.wmBlkButton:hover {
+    background-color:#222; 
+}
+
+.wmBlkButton.active {
+    margin-top:2px;
+    margin-bottom:0px;
+}
+
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;  /* Preferred icon size */
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: 'liga';
+}
+
+.material-icons.larger {
+    font-size: 30px; 
+ }

@@ -1,0 +1,104 @@
+<html>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">     
+    <meta http-equiv="Pragma" content="no-cache, no-store" />
+    <meta http-equiv="Expires" content="31 Dec 1997" />
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" type="text/css" href="WM.css" />
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="Bacon.min.js"></script>
+    <script type="text/javascript" src="WM.js"></script>    
+    <script type="text/javascript">
+      $(function(){ runWorkingMemory(); });
+    </script>    
+
+  </head>
+  <body>
+
+    <div id="wmContainer">
+
+      <div id="wmPresentation"></div>
+
+      <div id="wmFeedback">
+        <div id="wmFeedbackCorrect">
+          <span id="wmCorrectIcon" class="material-icons larger">&#xE5CA;</span> &nbsp;Correct
+        </div>
+        <div id="wmFeedbackIncorrect">
+          <span id="wmIncorrectIcon" class="material-icons larger">&#xE5CD;</span> &nbsp;Incorrect<br />
+        </div>
+        <br />
+        <div id="wmFeedbackAnswer"></div>
+      </div>
+
+
+      <div id="wmRecall">
+        <div id="wmRecallDisplay"></div>
+
+        <div id="wmRecallButtons">
+          <div id="wmDigits" style="display:none;">
+            <div id="mrb0" class="ui wmRecallButton">0</div>
+            <div id="mrb1" class="ui wmRecallButton">1</div>
+            <div id="mrb2" class="ui wmRecallButton">2</div>
+            <div id="mrb3" class="ui wmRecallButton">3</div>
+            <div id="mrb4" class="ui wmRecallButton">4</div>
+            <div id="mrb5" class="ui wmRecallButton">5</div>
+            <div id="mrb6" class="ui wmRecallButton">6</div>
+            <div id="mrb7" class="ui wmRecallButton">7</div>
+            <div id="mrb8" class="ui wmRecallButton">8</div>
+            <div id="mrb9" class="ui wmRecallButton">9</div>
+          </div>
+
+          <div id="wmLetters" style="display:none;">
+            <div id="mrbq" class="ui wmRecallButton">q</div>
+            <div id="mrbw" class="ui wmRecallButton">w</div>
+            <div id="mrbe" class="ui wmRecallButton">e</div>
+            <div id="mrbr" class="ui wmRecallButton">r</div>
+            <div id="mrbt" class="ui wmRecallButton">t</div>
+            <div id="mrby" class="ui wmRecallButton">y</div>
+            <div id="mrbu" class="ui wmRecallButton">u</div>
+            <div id="mrbi" class="ui wmRecallButton">i</div>
+            <div id="mrbo" class="ui wmRecallButton">o</div>
+            <div id="mrbp" class="ui wmRecallButton">p</div>
+            <br style="clear:both;" />
+            <div id="mrba" class="ui wmRecallButton">a</div>
+            <div id="mrbs" class="ui wmRecallButton">s</div>
+            <div id="mrbd" class="ui wmRecallButton">d</div>
+            <div id="mrbf" class="ui wmRecallButton">f</div>
+            <div id="mrbg" class="ui wmRecallButton">g</div>
+            <div id="mrbh" class="ui wmRecallButton">h</div>
+            <div id="mrbj" class="ui wmRecallButton">j</div>
+            <div id="mrbk" class="ui wmRecallButton">k</div>
+            <div id="mrbl" class="ui wmRecallButton">l</div>
+            <br style="clear:both;" />
+            <div id="mrbz" class="ui wmRecallButton">z</div>
+            <div id="mrbx" class="ui wmRecallButton">x</div>
+            <div id="mrbc" class="ui wmRecallButton">c</div>
+            <div id="mrbv" class="ui wmRecallButton">v</div>
+            <div id="mrbb" class="ui wmRecallButton">b</div>
+            <div id="mrbn" class="ui wmRecallButton">n</div>
+            <div id="mrbm" class="ui wmRecallButton">m</div>
+          </div>
+        </div>
+
+        
+        <div id="wmRecallControls">
+          <div id="wmCtrlOk"    class="ui wmBlkButton"><span class="material-icons">&#xE86C;</span></div>
+          <div id="wmCtrlClear" class="ui wmBlkButton"><span class="material-icons">&#xE5C9;</span></div>
+          <div id="wmCtrlBack"  class="ui wmBlkButton"><span class="material-icons">&#xE14A;</span></div>
+        </div>
+      </div>
+      
+      <div id="wmStartScreen">
+        <div id="wmInstructions"></div>        
+        <div id="wmStartContainer">
+          <div id="wmCtrlStart" class="ui wmBlkButton">start</div>  
+        </div>
+      </div>
+      
+    </div>
+    
+
+  </body>
+</html>

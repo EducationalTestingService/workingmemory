@@ -1,0 +1,314 @@
+<html>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">     
+    <meta http-equiv="Pragma" content="no-cache, no-store" />
+    <meta http-equiv="Expires" content="31 Dec 1997" />
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" type="text/css" href="WM.css" />
+
+    <style type="text/css">
+      body {
+      font-family:arial;
+      color:#222;
+      }
+    </style>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="Bacon.min.js"></script>
+    <script type="text/javascript" src="WM.js"></script>    
+    <script type="text/javascript">
+
+$(function(){
+    runWorkingMemory();
+});
+
+var WM_CONFIGURATION = {};
+
+function update(){
+
+    var newObject = new Object();
+
+    newObject.instructions = {forward:"", reverse:""}
+    newObject.proceedCriteria  = { numCorrect:0, increaseLength:0, numIncorrect:0, decreaseLength:0 };
+
+       $("input, select").each(function(i){
+
+           var v = $(this).val();
+
+           switch(this.id){
+               case "instructions_forward":
+               newObject.instructions["forward"] = v;
+               break;
+
+               case "instructions_reverse":
+               newObject.instructions["reverse"] = v;
+               break;
+
+               case "instructions_autoAdvance":
+               newObject.instructions["autoAdvance"] = v;
+               break;
+
+               case "proceedCriteria_numCorrect":
+               newObject.proceedCriteria["numCorrect"] = Number(v);
+               break;
+
+               case "proceedCriteria_increaseLength":
+               newObject.proceedCriteria["increaseLength"] = Number(v);
+               break;
+
+               case "proceedCriteria_numIncorrect":
+               newObject.proceedCriteria["numIncorrect"] = Number(v);
+               break;
+
+               case "proceedCriteria_decreaseLength":
+               newObject.proceedCriteria["decreaseLength"] = Number(v);
+               break;
+
+               case "feedbackTime":
+               case "stimuliInterval":
+               case "stopValue":
+               case "numItemsPerTrial":
+               case "autoAdvanceTime":
+               newObject[this.id] = Number(v);
+               break;
+
+               default:
+               newObject[this.id] = $(this).val();
+           }
+       });
+
+    resetWorkingMemory();
+    runWorkingMemory(newObject);
+}
+
+    </script>    
+
+
+    <style type="text/css">
+    #left {
+        float:left;
+        margin-right:20px;
+    }
+
+    #right {
+        float:left;
+        width:400px;
+        padding:20px;
+        border-left:1px solid #eee;
+        overflow:auto;
+        font-size:14px;
+    }
+
+    .col { width:50%; float:left;  min-height:25px; margin-bottom:4px; }
+
+    input[type='text'] {
+        width:180px;
+        border:1px solid #eee;
+        font-size:14px;
+    }
+
+    select { width:180px; }
+    </style>
+
+  </head>
+  <body>
+
+    <div style="overflow:auto; width:900px; margin:20px auto 0 auto;">
+      <div id="left">
+
+        <div id="wmContainer">
+
+          <div id="wmPresentation"></div>
+
+          <div id="wmFeedback">
+            <div id="wmFeedbackCorrect">
+              <span id="wmCorrectIcon" class="material-icons larger">&#xE5CA;</span> &nbsp;Correct
+            </div>
+            <div id="wmFeedbackIncorrect">
+              <span id="wmIncorrectIcon" class="material-icons larger">&#xE5CD;</span> &nbsp;Incorrect<br />
+            </div>
+            <br />
+            <div id="wmFeedbackAnswer"></div>
+          </div><!-- /wmFeedback -->        
+
+
+          <div id="wmRecall">
+            <div id="wmRecallDisplay"></div>
+
+            <div id="wmRecallButtons">
+              <div id="wmDigits" style="display:none;">
+                <div id="mrb0" class="ui wmRecallButton">0</div>
+                <div id="mrb1" class="ui wmRecallButton">1</div>
+                <div id="mrb2" class="ui wmRecallButton">2</div>
+                <div id="mrb3" class="ui wmRecallButton">3</div>
+                <div id="mrb4" class="ui wmRecallButton">4</div>
+                <div id="mrb5" class="ui wmRecallButton">5</div>
+                <div id="mrb6" class="ui wmRecallButton">6</div>
+                <div id="mrb7" class="ui wmRecallButton">7</div>
+                <div id="mrb8" class="ui wmRecallButton">8</div>
+                <div id="mrb9" class="ui wmRecallButton">9</div>
+              </div>
+
+              <div id="wmLetters" style="display:none;">
+                <div id="mrbq" class="ui wmRecallButton">q</div>
+                <div id="mrbw" class="ui wmRecallButton">w</div>
+                <div id="mrbe" class="ui wmRecallButton">e</div>
+                <div id="mrbr" class="ui wmRecallButton">r</div>
+                <div id="mrbt" class="ui wmRecallButton">t</div>
+                <div id="mrby" class="ui wmRecallButton">y</div>
+                <div id="mrbu" class="ui wmRecallButton">u</div>
+                <div id="mrbi" class="ui wmRecallButton">i</div>
+                <div id="mrbo" class="ui wmRecallButton">o</div>
+                <div id="mrbp" class="ui wmRecallButton">p</div>
+                <br style="clear:both;" />
+                <div id="mrba" class="ui wmRecallButton">a</div>
+                <div id="mrbs" class="ui wmRecallButton">s</div>
+                <div id="mrbd" class="ui wmRecallButton">d</div>
+                <div id="mrbf" class="ui wmRecallButton">f</div>
+                <div id="mrbg" class="ui wmRecallButton">g</div>
+                <div id="mrbh" class="ui wmRecallButton">h</div>
+                <div id="mrbj" class="ui wmRecallButton">j</div>
+                <div id="mrbk" class="ui wmRecallButton">k</div>
+                <div id="mrbl" class="ui wmRecallButton">l</div>
+                <br style="clear:both;" />
+                <div id="mrbz" class="ui wmRecallButton">z</div>
+                <div id="mrbx" class="ui wmRecallButton">x</div>
+                <div id="mrbc" class="ui wmRecallButton">c</div>
+                <div id="mrbv" class="ui wmRecallButton">v</div>
+                <div id="mrbb" class="ui wmRecallButton">b</div>
+                <div id="mrbn" class="ui wmRecallButton">n</div>
+                <div id="mrbm" class="ui wmRecallButton">m</div>
+              </div>
+            </div>
+
+            <div id="wmRecallControls">
+              <div id="wmCtrlOk"    class="ui wmBlkButton"><span class="material-icons">&#xE86C;</span></div>
+              <div id="wmCtrlClear" class="ui wmBlkButton"><span class="material-icons">&#xE5C9;</span></div>
+              <div id="wmCtrlBack"  class="ui wmBlkButton"><span class="material-icons">&#xE14A;</span></div>
+            </div>
+
+          </div><!-- /wmRecall -->
+
+          
+          <div id="wmStartScreen">
+            <div id="wmInstructions"></div>        
+            <div id="wmStartContainer">
+              <div id="wmCtrlStart" class="ui wmBlkButton">start</div>  
+            </div>
+          </div><!-- /wmStartScreen -->
+
+          
+        </div><!-- /wmContainer -->
+
+
+      </div><!-- /LEFT -->
+
+
+
+      <div id="right">
+        <b>Select your preferences, then click 'update' !</b>
+        <br />
+        <br />
+        <div class="col">stimuli</div>
+        <div class="col">
+          <select id="stimuli">
+            <option value="digits" selected="selected">digits</option>
+            <option value="letters">letters</option>
+        </select>
+        </div>
+
+        <div class="col">stimuli interval (ms)</div>
+        <div class="col">
+          <input type="text" id="stimuliInterval" value="1000" />
+        </div>
+
+        <div class="col">stimuli per trial</div>
+        <div class="col"><input type="text" id="numItemsPerTrial" value="4"></div>
+
+        <div class="col">direction</div>
+        <div class="col">
+          <select id="direction">
+            <option value="forward" selected="selected">forward</option>
+            <option value="reverse">reverse</option>
+          </select>
+        </div>
+
+        <div class="col">instructions: forward</div>
+        <div class="col"><input type="text" id="instructions_forward" value="Remember the digits you see,&lt;br/&gt;&nbsp; then recall them in order."></div>
+
+        <div class="col">instructions: reverse</div>
+        <div class="col"><input type="text" id="instructions_reverse" value="Remember the digits you see,&lt;br /&gt;&nbsp; then recall them in &lt;b&gt;reverse&lt;/b&gt; order."></div>
+
+        <div class="col">instructions: auto-advance</div>
+        <div class="col"><input type="text" id="instructions_autoAdvance" value="+"></div>
+
+        <div class="col">feedback</div>
+        <div class="col">
+          <select id="feedback">
+            <option value="none">none</option>
+            <option value="answer" selected="selected">correct answer</option>
+            <option value="correctness">correctness</option>
+          </select>
+        </div>
+        <div class="col">feedback time (ms)</div>
+        <div class="col"><input type="text" id="feedbackTime" value="3000"></div>
+
+        <div class="col">Advance</div>
+        <div class="col">
+          <select id="advance">
+            <option value="click" selected="selected">click</option>
+            <option value="auto">auto</option>
+          </select>
+        </div>
+        <div class="col">autoAdvance time (ms)</div>
+        <div class="col"><input type="text" id="autoAdvanceTime" value="2000"></div>
+
+
+        <div class="col">&nbsp;</div><div class="col">&nbsp;</div>
+
+        <div class="col">when number correct is...</div>
+        <div class="col">
+          <input type="text" id="proceedCriteria_numCorrect" value="1">
+        </div>
+
+        <div class="col">...increase by</div>
+        <div class="col">
+          <input type="text" id="proceedCriteria_increaseLength" value="1">
+        </div>
+
+        <div class="col">when number incorrect is...</div>
+        <div class="col">
+          <input type="text" id="proceedCriteria_numIncorrect" value="2">
+        </div>
+
+        <div class="col">...decrease by</div>
+        <div class="col">
+          <input type="text" id="proceedCriteria_decreaseLength" value="1">
+        </div>
+
+        <div class="col">&nbsp;</div><div class="col">&nbsp;</div>
+
+        <div class="col">stop when...</div>
+        <div class="col">
+          <select id="stopType">
+            <option value="fixed" selected="selected">number trials</option>
+            <option value="correct">number correct</option>
+            <option value="incorrect">number Incorrect</option>
+          </select>
+        </div>
+        <div class="col">...is</div>
+        <div class="col"><input type="text" id="stopValue" value="2"></div>
+        <br style="clear:both;">
+        <div style="padding-top:20px;"><a href="javascript:update();">update</a></div>
+
+      </div><!-- /RIGHT -->
+
+
+    </div>
+    
+
+  </body>
+</html>
+
+
