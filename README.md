@@ -4,3 +4,8 @@ This program tests one's working memory capacity for sequences of numbers or let
 This tool has many configuration options. Trials can be of any length. Sequences may recalled either forward or backward. Users can receive feedback (or not). Trials may end when logical conditions are met. 
 
 Check out the configuration tool to play with these options.
+
+## Requirements
+jQuery 1.11.3
+
+bacon.js (included)
